@@ -1,0 +1,22 @@
+.nav {
+    width: 100vw;
+    height: 10vh;
+    ul {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+    li {
+        margin-left: 20px;
+        padding: 10px 30px 10px 10px;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+            color: orange;
+        }
+        &:first-child {
+            border-right: 1px solid black;
+            
+        }
+    }
+}

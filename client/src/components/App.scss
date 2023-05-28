@@ -1,0 +1,9 @@
+// Base
+@import "scss/reset";
+@import "scss/base";
+@import "scss/variables";
+
+// Blocks
+@import "./main-page/main";
+@import "./nav-menu/nav";
+@import "./shopping-card/shopping-card";
