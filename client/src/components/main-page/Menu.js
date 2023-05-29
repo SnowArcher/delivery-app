@@ -1,26 +1,22 @@
 import MenuItem from './MenuItem';
 import axios from 'axios';
+import {useState, useEffect} from 'react';
 
 export default function Menu() {
-    const getFood = () => {
-        axios.get('http://localhost:5000/api/food').then( res =>
-        {
-            console.log(res.data)
-            return res.data
-        }).catch(err => {
-            console.log(err)
+    const src = 'http://localhost:5000/api/food'
+    const [food, setFood] = useState([])
+    useEffect(() => {
+        axios.get(src).then(data => {
+            setFood(data.data)
         })
-    }
-    const food = getFood();
+    }, [])
     return (
         <div className="menulist">
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
+            {
+                food.map((food, index) => {
+                    return <MenuItem key={index} name={food.name} description={food.description} price={food.price} img={food.img}/>           
+                })
+            }
         </div>
     );
 }

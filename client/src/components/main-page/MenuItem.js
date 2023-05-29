@@ -1,11 +1,12 @@
-export default function Menu() {
+export default function Menu({name, description, price, img}) {
+    const src = 'http://localhost:5000/'
     return (
         <div className="menulist_item">
-            <img src="../img/mcdonalds/Sdwch_Hamburger product-header-desktop.jpg" alt="food"/>
-            <h1>Гамбургер</h1>
-            <p>Біфштекс із натуральної яловичини, цибуля, шматочок маринованого огірка, заправлені гірчицею і кетчупом, у запашній булочці з пшеничного борошна.</p>
+            <img src={src + img} alt="food"/>
+            <h1>{name}</h1>
+            <p>{description}</p>
             <div className="price-row">
-                <p>price:</p>
+                <p>{`price: ${price} UAH`}</p>
                 <button>add to Card</button>
             </div>
         </div>
