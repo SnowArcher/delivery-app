@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import { useDispatch} from 'react-redux';
 
 export default function Shop() {
     const src = 'http://localhost:5000/api/shop'
@@ -9,6 +10,10 @@ export default function Shop() {
             setShops(data.data)
         })
     }, [])
+    const dispatch = useDispatch()
+    const changeShop = (activeshop) => {
+        dispatch({type:"CHANGE_SHOP", shop: activeshop})
+    }
     return (
         <div className="shoplist">
             <h1>Shops:</h1>
@@ -16,7 +21,7 @@ export default function Shop() {
                 {
                     shops.map((shop, index) => {
                         return (
-                            <li key={index}>{shop.name}</li>
+                            <li key={index} onClick={() => {changeShop(shop.id)}}>{shop.name}</li>
                         );
                     })
                 }
